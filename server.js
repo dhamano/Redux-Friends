@@ -62,16 +62,18 @@ function authenticator(req, res, next) {
 
 app.post('/api/login', (req, res) => {
   const { username, password } = req.body;
-  if (username === 'Lambda School' && password === 'i<3Lambd4') {
-    req.loggedIn = true;
-    res.status(200).json({
-      payload: token
-    });
-  } else {
-    res
-      .status(403)
-      .json({ error: 'Username or Password incorrect. Please see Readme' });
-  }
+  setTimeout(() => {
+    if (username === 'Lambda' && password === 'pass') {
+      req.loggedIn = true;
+      res.status(200).json({
+        payload: token
+      });
+    } else {
+      res
+        .status(403)
+        .json({ error: 'Username or Password incorrect. Please see Readme' });
+    }
+  }, 5000);
 });
 
 app.get('/api/friends', authenticator, (req, res) => {
@@ -91,11 +93,13 @@ app.get('/api/friends/:id', authenticator, (req, res) => {
 });
 
 app.post('/api/friends', authenticator, (req, res) => {
-  const friend = { id: getNextId(), ...req.body };
+  setTimeout(() => {
+    const friend = { id: getNextId(), ...req.body };
 
-  friends = [...friends, friend];
+    friends = [...friends, friend];
 
-  res.send(friends);
+    res.send(friends);
+  }, 2000);
 });
 
 app.put('/api/friends/:id', authenticator, (req, res) => {
