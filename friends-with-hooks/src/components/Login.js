@@ -10,6 +10,7 @@ const Login = ({ touched, errors }) => {
   return(
     <main>
       <Form>
+        <h2>Friends 90's(ish) style</h2>
         <Field name="username" type="text" />
         <div className="error">
         {touched.username && errors.username && <p>{errors.username}</p> }
@@ -18,7 +19,7 @@ const Login = ({ touched, errors }) => {
         <div className="error">
         {touched.password && errors.password && <p>{errors.password}</p> }
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit">Log in</button>
       </Form>
     </main>
   )
