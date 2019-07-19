@@ -13,5 +13,5 @@ export const getFriendsList = () => {
       console.log(res);
       return res.data
     })
-    .catch(err => console.log(err));
+    .catch(err => console.log('get friends list',err.response));
 }

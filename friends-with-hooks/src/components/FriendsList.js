@@ -5,17 +5,21 @@ import { getFriendsList } from '../utilities/services';
 import FriendCard from './FriendCard';
 
 const FriendsList = () => {
-  const [ friendsList, setFriendsList ] = useState([]);
+  const [ friendsList, setFriendsList ] = useState(null);
 
   useEffect(() => {
-    getFriendsList().then( res => setFriendsList(res));
+    getFriendsList().then( res => setFriendsList(res) );
   }, []);
 
   console.log('friendsList',friendsList)
 
+  if(!friendsList) {
+    return <Loader type="Ball-Triangle" color="#00BFFF" height="200" width="200" />
+  }
+
   return(
     <main>
-      <h2>Friends List</h2>
+      <h2>Friends List 90&rsquo;s(ish) Style</h2>
       <p></p>
       <ul className="friends-list">
           {

@@ -10,11 +10,11 @@ const Navigation = () => {
   return(
     <nav>
       {hasLocalVar("token") ?
-          (<>
-            <NavLink exact to="/friends-list">Home</NavLink>
-            <NavLink exact to="/add-friends">Add a friend</NavLink>
-            <NavLink exact onClick={logout} to="/">Logout</NavLink>
-          </>)
+          (<ul>
+            <li><NavLink exact to="/friends-list">Home</NavLink></li>
+            <li><NavLink exact to="/add-friends">Add a friend</NavLink></li>
+            <li><NavLink exact onClick={logout} to="/">Logout</NavLink></li>
+          </ul>)
         :
           <NavLink exact to="/">Login</NavLink>
       }
