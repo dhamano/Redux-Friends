@@ -1,15 +1,12 @@
 import React from 'react';
-import { axiosWithAuth } from '../utilities/axiosWithAuth';
+import { postFriendToList } from '../utilities/services';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-
-import { setLocalStorage } from '../utilities';
-import { baseUrl } from '../utilities/services';
 
 const AddFriend = ({ touched, errors, props }) => {
   console.log('props',props);
   return(
-    <main>
+    <main className="add-friend">
       <Form>
         <h2>Add a New Friend</h2>
         <Field name="name" type="text" placeholder="friend name" />
@@ -52,11 +49,6 @@ export default withFormik({
       .required("Email is required")
   }),
   handleSubmit( friendInfo, formikBag ) {
-    console.log('formikBag',formikBag.props);
-    axiosWithAuth().post(`${baseUrl}/api/friends`, friendInfo)
-      .then( res => {
-        formikBag.props.history.push("/friends-list");
-      })
-      .catch( err => console.log(err) );
+    postFriendToList( friendInfo, formikBag );
   }
 })(AddFriend);

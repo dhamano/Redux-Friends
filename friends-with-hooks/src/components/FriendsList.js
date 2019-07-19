@@ -4,14 +4,12 @@ import { getFriendsList } from '../utilities/services';
 
 import FriendCard from './FriendCard';
 
-const FriendsList = () => {
+const FriendsList = (props) => {
   const [ friendsList, setFriendsList ] = useState(null);
 
   useEffect(() => {
     getFriendsList().then( res => setFriendsList(res) );
   }, []);
-
-  console.log('friendsList',friendsList)
 
   if(!friendsList) {
     return <Loader type="Ball-Triangle" color="#00BFFF" height="200" width="200" />
@@ -23,7 +21,7 @@ const FriendsList = () => {
       <p></p>
       <ul className="friends-list">
           {
-            friendsList && friendsList.map( (friend,i) => <FriendCard friendInfo={friend} key={i} /> )
+            friendsList && friendsList.map( (friend,i) => <FriendCard {...props} friendInfo={friend} key={i} /> )
           }
       </ul>
     </main>

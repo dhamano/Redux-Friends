@@ -8,14 +8,14 @@ import { baseUrl } from '../utilities/services';
 
 const Login = ({ touched, errors }) => {
   return(
-    <main>
+    <main className="login">
       <Form>
         <h2>Friends 90's(ish) style</h2>
-        <Field name="username" type="text" />
+        <Field name="username" type="text" placeholder="username" />
         <div className="error">
         {touched.username && errors.username && <p>{errors.username}</p> }
         </div>
-        <Field name="password" type="password" />
+        <Field name="password" type="password" placeholder="password"  />
         <div className="error">
         {touched.password && errors.password && <p>{errors.password}</p> }
         </div>
